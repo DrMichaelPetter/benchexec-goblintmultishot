@@ -22,9 +22,9 @@ class Tool(benchexec.tools.template.BaseTool2):
     """
 
     def executable(self, tool_locator):
-        multishot = tool_locator.find_executable("goblint_runner.py")
-        if multishot:
-            return multishot
+        runner = tool_locator.find_executable("goblint_runner.py")
+        if runner:
+            return runner
         return tool_locator.find_executable("goblint")
 
     def version(self, executable):
