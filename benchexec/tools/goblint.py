@@ -22,7 +22,10 @@ class Tool(benchexec.tools.template.BaseTool2):
     """
 
     def executable(self, tool_locator):
-        runner = tool_locator.find_executable("goblint_runner.py", exitOnError=False)
+        try:
+            runner = tool_locator.find_executable("goblint_runner.py")
+        except benchexec.tools.template.ToolNotFoundException:
+            runner = None
         if runner:
             return runner
         return tool_locator.find_executable("goblint")
